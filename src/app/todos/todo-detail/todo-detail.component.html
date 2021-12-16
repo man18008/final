@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2> {{ todo.name }} </h2>
+        <h4> {{ todo.imageUrl }} </h4>
+        <a type="button" class="btn btn-md zoom" style="background-color: rgb(224, 170, 255);"  (click)="onDelete()">Completed</a>
+        <a type="button" class="btn btn-md zoom" style="background-color: rgb(224, 170, 255);" routerLink="/todos/{{todo.id}}/edit">Edit</a>
+      </div>
+    </div>
+  </div>
+<!-- </div>
+    <div class="row"> -->
+      <!-- <div class="col-xs-5">
+        <img *ngIf="todo.imageUrl !== ' '" [src]="todo.imageUrl" alt="{{ todo.name }}" class="img-responsive"
+          style="max-height: 100px;">
+      </div> -->
+      <!-- <div class="col-xs-12 pull-right">
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+      </div>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col-xs-12">
+        <strong> Phone: {{ todo.phone }}</strong>
+      </div>
+    </div> -->

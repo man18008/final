@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+      <form id="todo-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="name">Class:</label>
+            <input name="name" [ngModel]="todo?.name" #name="ngModel" type="text" id="name"
+              class="form-control required" size="120" max="120" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="imageUrl">Assignment:</label>
+            <input name="imageUrl" [ngModel]="todo?.imageUrl" #imageUrl="ngModel" type="text" id="imageUrl"
+              class="form-control" size="150" max="255" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 btn-toolbar">
+            <button class="btn" style="background-color: rgb(224, 170, 255);"  type="submit" [disabled]="!f.valid">Save</button>
+            <button class="btn" style="background-color: rgb(224, 170, 255);"  type="button" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
