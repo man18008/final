@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+
+      <form id="calendar-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="name">Event Name:</label>
+            <input name="name" [ngModel]="calendar?.name" #name="ngModel" type="text" id="name" class="form-control"
+              size="120" max="120">
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="description">calendar Description:</label>
+            <input name="description" [ngModel]="calendar?.description" #description="ngModel" type="text"
+              id="description" class="form-control" size="120" max="255">
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="url">calendar URL:</label>
+            <input name="url" [ngModel]="calendar?.url" #url="ngModel" type="text" id="url" class="form-control"
+              size="150" max="255" required>
+          </div>
+        </div> -->
+
+        <!-- <div class="alert alert-danger" *ngIf="!f.valid">The calendar Title and calendar URL are required fields.</div> -->
+
+        <div class="row">
+          <div class="col-xs-12 btn-toolbar">
+              <!-- Locate the Save <button> element and add an *ngIf directive to disable the Save <button> when the form is not valid. -->
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+            <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <!-- See week08 files given in assignment -->

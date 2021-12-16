@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title"><h1>Calendar</h1></span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+            <th scope="col">Sunday</th>
+          </tr>
+        </thead>
+      </table>
+      <bujo-calendar-item *ngFor="let calendar of calendars" [calendar]="calendar"></bujo-calendar-item>
+    </div>
+  </div>
+</div>

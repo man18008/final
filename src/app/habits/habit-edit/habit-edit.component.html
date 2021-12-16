@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+      <form id="document-edit">
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="subject">New Habit</label>
+            <input type="text" id="subject" class="form-control" size="120" max="120" #subject>
+          </div>
+
+          <!-- <div class="col-sm-12 form-group">
+            <label for="habit">habit</label>
+            <input type="text" id="habit" class="form-control" max="255" size="120" #msgText>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn" type="submit" (click)="onSendhabit()">Send</button>
+            <button class="btn" type="button" (click)="onClear()">Clear</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,33 @@
+<div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
+  <div class="panel-heading">
+    <div class="row pad-all">
+      <h4 class="title margin-left-right">{{selectedcalendar.id}}</h4>
+      <label class="">Events Today:</label>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="pad-left-right">
+      <div class="row">
+        <span class="label-value">{{selectedcalendar.name}}</span>
+      </div>
+      <div class="row" style="margin-top: 30px;">
+        <div class="col">
+          <a class="btn zoom" style="background-color: rgb(224, 170, 255); margin-left: 44px;"  routerLink="/calendars/{{selectedcalendar.id}}/edit">Edit</a>
+        </div>
+        <div class="col">
+          <a class="btn zoom" style="background-color: rgb(224, 170, 255); margin-left: 44px;"  routerLink="/calendars/{{selectedcalendar.id}}/edit">Add New</a>
+        </div>
+        <!-- <div class="col">
+         <a class="btn zoom " style="background-color: rgb(224, 170, 255); margin-top:2px"  (click)="onDelete()">Delete</a>
+        </div> -->
+
+        <!-- <a class="btn zoom" style="background-color: rgb(224, 170, 255);"  (click)="onView()">View</a> -->
+      </div>
+      <br>
+      <!-- <div class="row">
+        <label>URL:</label>
+        <a class="label-value" href="{{selectedcalendar.url}}">{{selectedcalendar.url}}</a>
+      </div> -->
+    </div>
+  </div>
+</div>
