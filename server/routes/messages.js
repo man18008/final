@@ -6,8 +6,8 @@ const Message = require('../models/message');
 
 router.get('/', (req, res, next) => {
   Message.find()
-    .then(messages => {
-      res.status(200).json(messages);
+    .then(habit => {
+      res.status(200).json(habit);
     })
     .catch(error => {
       res.status(500).json({
@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const maxMessageId = sequenceGenerator.nextId("messages");
+  const maxMessageId = sequenceGenerator.nextId("habit");
   console.log('maxMessageId', maxMessageId)
   const message = new Message({
     id: maxMessageId,

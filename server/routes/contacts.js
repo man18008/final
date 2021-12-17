@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 const sequenceGenerator = require('./sequenceGenerator');
-const Contact = require('../models/contact');
+const todo = require('../models/todo');
 
 router.get('/', (req, res, next) => {
-  Contact.find()
+  todo.find()
     .populate('group')
-    .then(contacts => {
-      res.status(200).json(contacts);
+    .then(todos => {
+      res.status(200).json(todos);
     })
     .catch(error => {
       res.status(500).json({
@@ -19,21 +19,21 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const maxContactId = sequenceGenerator.nextId("contacts");
+  const maxtodoId = sequenceGenerator.nextId("todos");
 
-  const contact = new Contact({
-    id: maxContactId,
+  const todo = new todo({
+    id: maxtodoId,
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
     imageUrl: req.body.imageUrl
   });
 
-  contact.save()
-    .then(createdContact => {
+  todo.save()
+    .then(createdtodo => {
       res.status(201).json({
-        message: 'Contact added successfully',
-        contact: createdContact
+        message: 'todo added successfully',
+        todo: createdtodo
       });
     })
     .catch(error => {
@@ -45,21 +45,21 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-  Contact.findOne({
+  todo.findOne({
       id: req.params.id
     })
-    .then(contact => {
-      contact.name = req.body.name;
-      contact.email = req.body.email;
-      contact.phone = req.body.phone;
-      contact.imageUrl = req.body.imageUrl;
+    .then(todo => {
+      todo.name = req.body.name;
+      todo.email = req.body.email;
+      todo.phone = req.body.phone;
+      todo.imageUrl = req.body.imageUrl;
 
-      Contact.updateOne({
+      todo.updateOne({
           id: req.params.id
-        }, contact)
+        }, todo)
         .then(result => {
           res.status(204).json({
-            message: 'Contact updated successfully'
+            message: 'todo updated successfully'
           })
         })
         .catch(error => {
@@ -71,25 +71,25 @@ router.put('/:id', (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({
-        message: 'Contact not found.',
+        message: 'todo not found.',
         error: {
-          contact: 'Contact not found'
+          todo: 'todo not found'
         }
       });
     });
 });
 
 router.delete("/:id", (req, res, next) => {
-  Contact.findOne({
+  todo.findOne({
       id: req.params.id
     })
-    .then(contact => {
-      Contact.deleteOne({
+    .then(todo => {
+      todo.deleteOne({
           id: req.params.id
         })
         .then(result => {
           res.status(204).json({
-            message: "Contact deleted successfully"
+            message: "todo deleted successfully"
           });
         })
         .catch(error => {
@@ -101,9 +101,9 @@ router.delete("/:id", (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({
-        message: 'Contact not found.',
+        message: 'todo not found.',
         error: {
-          contact: 'Contact not found'
+          todo: 'todo not found'
         }
       });
     });

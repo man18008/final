@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-// Implement the Documents Routing File
+// Implement the calendars Routing File
 const sequenceGenerator = require('./sequenceGenerator');
-const Document = require('../models/document');
+const calendar = require('../models/calendar');
 
-// The router.get() method is responsible for getting the list of documents in the documents collection in the database
+// The router.get() method is responsible for getting the list of calendars in the calendars collection in the database
 router.get('/', (req, res, next) => {
-  Document.find()
-    .then(documents => {
-      res.status(200).json(documents);
+  calendar.find()
+    .then(calendars => {
+      res.status(200).json(calendars);
     })
     .catch(error => {
       res.status(500).json({
@@ -19,22 +19,22 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// The router.post() method is responsible for adding a new document to the collection in the database.
+// The router.post() method is responsible for adding a new calendar to the collection in the database.
 router.post('/', (req, res, next) => {
-  const maxDocumentId = sequenceGenerator.nextId("documents");
+  const maxcalendarId = sequenceGenerator.nextId("calendars");
 
-  const document = new Document({
-    id: maxDocumentId,
+  const calendar = new calendar({
+    id: maxcalendarId,
     name: req.body.name,
     description: req.body.description,
     url: req.body.url
   });
 
-  document.save()
-    .then(createdDocument => {
+  calendar.save()
+    .then(createdcalendar => {
       res.status(201).json({
-        message: 'Document added successfully',
-        document: createdDocument
+        message: 'calendar added successfully',
+        calendar: createdcalendar
       });
     })
     .catch(error => {
@@ -45,22 +45,22 @@ router.post('/', (req, res, next) => {
     });
 });
 
-// The router.put() method is responsible for updating an existing document in the database.
+// The router.put() method is responsible for updating an existing calendar in the database.
 router.put('/:id', (req, res, next) => {
-  Document.findOne({
+  calendar.findOne({
       id: req.params.id
     })
-    .then(document => {
-      document.name = req.body.name;
-      document.description = req.body.description;
-      document.url = req.body.url;
+    .then(calendar => {
+      calendar.name = req.body.name;
+      calendar.description = req.body.description;
+      calendar.url = req.body.url;
 
-      Document.updateOne({
+      calendar.updateOne({
           id: req.params.id
-        }, document)
+        }, calendar)
         .then(result => {
           res.status(204).json({
-            message: 'Document updated successfully'
+            message: 'calendar updated successfully'
           })
         })
         .catch(error => {
@@ -72,26 +72,26 @@ router.put('/:id', (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({
-        message: 'Document not found.',
+        message: 'calendar not found.',
         error: {
-          document: 'Document not found'
+          calendar: 'calendar not found'
         }
       });
     });
 });
 
-// The router.delete() method is responsible for deleting an existing document in the database.
+// The router.delete() method is responsible for deleting an existing calendar in the database.
 router.delete("/:id", (req, res, next) => {
-  Document.findOne({
+  calendar.findOne({
       id: req.params.id
     })
-    .then(document => {
-      Document.deleteOne({
+    .then(calendar => {
+      calendar.deleteOne({
           id: req.params.id
         })
         .then(result => {
           res.status(204).json({
-            message: "Document deleted successfully"
+            message: "calendar deleted successfully"
           });
         })
         .catch(error => {
@@ -103,9 +103,9 @@ router.delete("/:id", (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({
-        message: 'Document not found.',
+        message: 'calendar not found.',
         error: {
-          document: 'Document not found'
+          calendar: 'calendar not found'
         }
       });
     });

@@ -1,8 +1,8 @@
 var Sequence = require('../models/sequence');
 
-var maxDocumentId;
-var maxMessageId;
-var maxContactId;
+var maxcalendarId;
+var maxtodoId;
+var maxhabitId;
 var sequenceId = null;
 
 function SequenceGenerator() {
@@ -17,9 +17,9 @@ function SequenceGenerator() {
       }
 
       sequenceId = sequence._id;
-      maxDocumentId = sequence.maxDocumentId;
-      maxMessageId = sequence.maxMessageId;
-      maxContactId = sequence.maxContactId;
+      maxcalendarId = sequence.maxcalendarId;
+      maxtodoId = sequence.maxtodoId;
+      maxhabitId = sequence.maxhabitId;
     });
 }
 
@@ -29,20 +29,20 @@ SequenceGenerator.prototype.nextId = function(collectionType) {
   var nextId;
 
   switch (collectionType) {
-    case 'documents':
-      maxDocumentId++;
-      updateObject = {maxDocumentId: maxDocumentId};
-      nextId = maxDocumentId;
+    case 'calendars':
+      maxcalendarId++;
+      updateObject = {maxcalendarId: maxcalendarId};
+      nextId = maxcalendarId;
       break;
-    case 'messages':
-      maxMessageId++;
-      updateObject = {maxMessageId: maxMessageId};
-      nextId = maxMessageId;
+    case 'habit':
+      maxtodoId++;
+      updateObject = {maxtodoId: maxtodoId};
+      nextId = maxtodoId;
       break;
-    case 'contacts':
-      maxContactId++;
-      updateObject = {maxContactId: maxContactId};
-      nextId = maxContactId;
+    case 'habits':
+      maxhabitId++;
+      updateObject = {maxhabitId: maxhabitId};
+      nextId = maxhabitId;
       break;
     default:
       return -1;
@@ -61,5 +61,5 @@ SequenceGenerator.prototype.nextId = function(collectionType) {
 
 module.exports = new SequenceGenerator();
 
-// See Below Link for code 
+// See Below Link for code
 // https://byui.instructure.com/courses/164460/pages/w11-assignment-instructions
