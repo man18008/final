@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const sequenceSchema = mongoose.Schema({
-  maxDocumentId: {
+  maxcalendarId: {
     type: String,
     required: true
   },
-  maxMessageId: {
+  maxtodoId: {
     type: String,
     required: true
   },
-  maxContactId: {
+  maxhabitId: {
     type: String,
     required: true
   }

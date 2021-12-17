@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const contactSchema = mongoose.Schema({
+const habitSchema = mongoose.Schema({
   id: {
     type: String,
     required: true
@@ -21,16 +21,16 @@ const contactSchema = mongoose.Schema({
   },
   group: [{
     type: mongoose.Schema.Types.String,
-    ref: 'Contact'
-    
+    ref: 'habit'
+
 
   }]
 });
 
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('habit', habitSchema);
 
 //Notes:
-//The objects in the contacts collection contain a group property that is an array of ObjectId values.
+//The objects in the habits collection contain a group property that is an array of ObjectId values.
 
 // SEE HERE: CHANGED GROUPS (ORIGINAL BELOW)
-// group: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Contact' }]
+// group: [{ type: mongoose.Schema.Types.ObjectId, ref: 'habit' }]

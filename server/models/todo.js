@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const messageSchema = mongoose.Schema({
+const todoSchema = mongoose.Schema({
   id: {
     type: String,
     required: true
@@ -14,11 +14,11 @@ const messageSchema = mongoose.Schema({
   },
   sender: {
     type: mongoose.Schema.Types.String,
-    ref: 'Contact'
+    ref: 'todo'
   }
 });
 
-module.exports = mongoose.model('Message', messageSchema);
+module.exports = mongoose.model('todo', todoSchema);
 
 //See link bellow code. The other model .js files are based on this.
 //https://byui.instructure.com/courses/164460/pages/w11-assignment-instructions

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const documentSchema = mongoose.Schema({
+const calendarSchema = mongoose.Schema({
   id: {
     type: String,
     required: true
@@ -26,7 +26,7 @@ const documentSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Document', documentSchema);
+module.exports = mongoose.model('calendar', calendarSchema);
 
 //Notes:
-//The children property in the documents collection is an array of child documents that are related to the document.
+//The children property in the calendars collection is an array of child calendars that are related to the calendar.
